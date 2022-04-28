@@ -17,7 +17,31 @@ const Map = () => {
     id: "geojson",
     data: jsonData,
     lineWidthMinPixels: 4,
-    getLineColor: [69, 90, 100, 255],
+    getLineColor: (data) => {
+      switch (data.properties.N02_004) {
+        case "北海道旅客鉄道":
+          return [3, 193, 61, 255];
+          break;
+        case "東日本旅客鉄道":
+          return [55, 134, 64, 255];
+          break;
+        case "東海旅客鉄道":
+          return [255, 126, 28, 255];
+          break;
+        case "西日本旅客鉄道":
+          return [0, 114, 186, 255];
+          break;
+        case "四国旅客鉄道":
+          return [0, 172, 209, 255];
+          break;
+        case "九州旅客鉄道":
+          return [246, 46, 54, 255];
+          break;
+        default:
+          return [192, 192, 192, 0];
+          break;
+      }
+    },
   });
 
   return (
@@ -28,7 +52,7 @@ const Map = () => {
       controller={true}
       onViewStateChange={(event) => setViewState(event.viewState)}
     >
-      <ReactMapGL mapStyle={process.env.MAP_URL} mapLib={maplibregl}/>
+      <ReactMapGL mapStyle={process.env.MAP_URL} mapLib={maplibregl} />
     </DeckGL>
   );
 };
