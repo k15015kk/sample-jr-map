@@ -2,7 +2,6 @@
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
-// TODO: なんでこのような設定になるのか調べる必要がある
 const nextConfig = {
   reactStrictMode: true,
   webpack: config => {
